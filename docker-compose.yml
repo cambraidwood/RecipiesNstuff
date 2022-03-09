@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  recipiesnstuff:
+    image: ${DOCKER_REGISTRY-}recipiesnstuff
+    build:
+      context: .
+      dockerfile: RecipiesNstuff/Dockerfile
