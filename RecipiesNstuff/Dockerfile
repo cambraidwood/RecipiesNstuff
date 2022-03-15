@@ -7,7 +7,7 @@ EXPOSE 60000
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["RecipiesNstuff/RecipiesNstuff.csproj", "RecipiesNstuff/"]
+COPY ["RecipiesNstuff/RecipiesNstuff.csproj", "./RecipiesNstuff/"]
 RUN dotnet restore "RecipiesNstuff/RecipiesNstuff.csproj"
 COPY . .
 WORKDIR "/src/RecipiesNstuff"
