@@ -35,7 +35,7 @@ jobs:
         with:
           push: true
           tags: cambscontainerregistry.azurecr.io/wtf:${{ github.sha }}
-          context: ./RecipiesNstuff
+          context: ./
           file: ./RecipiesNstuff/Dockerfile
 
   deploy:
