@@ -10,18 +10,41 @@
   <div class="card-body">
 
     <form asp-page-handler="search" method="post">
-      <div class="form-group">
-        <label for="exampleInput1" >Search</label>
-        <input type="text" class="form-control" name="searchText" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-primary">Search</button>
+      
+        <div class="container">
+          <div class="row">
+            <div class="col-10">
+              <div class="form-group">
+                <input type="text" class="form-control" name="searchText" placeholder="Search">
+              </div>
+            </div>
+            <div class="col-2">
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+           </div>
+        </div>
+      
+        <br />
+
     </form>
 
     @foreach(var n in Model.Notes) {
-        @n.Title
+
+        <div class="card">
+          @*<img class="card-img-top" src="..." alt="Card image cap">*@
+          <div class="card-body">
+            <h5 class="card-title">@n.Title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
+            <p class="card-text">@n.Description</p>
+            <a href="#" class="card-link">External link</a>
+            <a href="#" class="card-link">Show items</a>
+          </div>
+        </div>
+        <br />
+
     }
 
-    actions
+    <button type="button" class="btn btn-primary">Add new note</button>
 
   </div>
 </div>

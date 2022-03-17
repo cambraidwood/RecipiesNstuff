@@ -58,6 +58,8 @@ namespace RecipiesNstuff.Pages.Notebook
         public string Tags { get; }
         public string Url { get; }
         public List<NoteItem> NoteItems { get; }
+        public DateTime Created { get; }
+        public DateTime Updated { get; }
 
         public Note()
         {
@@ -73,6 +75,9 @@ namespace RecipiesNstuff.Pages.Notebook
             this.Tags = Tags;
             this.Url = Url;
             this.NoteItems = NoteItems;
+
+            this.Created = DateTime.Now;
+            this.Updated = this.Created;
         }
     }
 
