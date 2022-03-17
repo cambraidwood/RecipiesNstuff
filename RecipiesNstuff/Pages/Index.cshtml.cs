@@ -16,5 +16,10 @@ namespace RecipiesNstuff.Pages
         {
 
         }
+
+        public IActionResult OnPostLogon()
+        {
+            return new RedirectToPageResult("/Notebook/index");
+        }
     }
 }

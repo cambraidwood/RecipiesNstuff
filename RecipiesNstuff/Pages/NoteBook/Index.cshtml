@@ -1,6 +1,27 @@
 ﻿@page
-@model RecipiesNstuff.Pages.NoteBook.IndexModel
+@model RecipiesNstuff.Pages.Notebook.IndexModel
 @{
 }
 
-notebook
+<div class="card">
+  <div class="card-header">
+    Notebook
+  </div>
+  <div class="card-body">
+
+    <form asp-page-handler="search" method="post">
+      <div class="form-group">
+        <label for="exampleInput1" >Search</label>
+        <input type="text" class="form-control" name="searchText" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    @foreach(var n in Model.Notes) {
+        @n.Title
+    }
+
+    actions
+
+  </div>
+</div>
