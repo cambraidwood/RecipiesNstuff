@@ -23,7 +23,7 @@ namespace RecipiesNstuff.Pages.Notebook
             noteItems.Add(new NoteItem(2, "Second Item First Note", "/images/itemImage2.jpg"));
             noteItems.Add(new NoteItem(3, "Third Item First Note", "/images/itemImage3.jpg"));
 
-            Notes.Add(new Note(1, "First Note", "First Description", "/images/noteImage1.jpg", "recipe", "http://www.domain.com", noteItems));
+            Notes.Add(new Note(1, "First Note", "First Description", "/images/noteImage1.jpg", "recipe", "https://www.domain.com", noteItems));
 
             noteItems = new List<NoteItem>();
             noteItems.Add(new NoteItem(4, "First Item Second Note", "/images/itemImage1.jpg"));

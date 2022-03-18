@@ -7,6 +7,11 @@
         {
             if (!string.IsNullOrWhiteSpace(str))
             {
+
+                if (!str.ToLower().StartsWith("http://") && !str.ToLower().StartsWith("https://")) {
+                    str = "http://" + str;
+                }
+
                 var result = Uri.TryCreate(str, UriKind.Absolute, out var url);
 
                 if (!result)
