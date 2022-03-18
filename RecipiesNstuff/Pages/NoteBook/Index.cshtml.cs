@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RecipiesNstuff.Domain.Extentions;
 
 namespace RecipiesNstuff.Pages.Notebook
 {
@@ -20,20 +21,23 @@ namespace RecipiesNstuff.Pages.Notebook
             List<NoteItem> noteItems = new List<NoteItem>();
             noteItems.Add(new NoteItem(1, "First Item First Note", "/images/itemImage1.jpg"));
             noteItems.Add(new NoteItem(2, "Second Item First Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(3, "Third Item First Note", "/images/itemImage3.jpg"));
 
-            Notes.Add(new Note(1, "First Note", "First Description", "/images/image1.jpg", "recipe", "www.domain.com", noteItems));
-
-            noteItems = new List<NoteItem>();
-            noteItems.Add(new NoteItem(1, "First Item Second Note", "/images/itemImage1.jpg"));
-            noteItems.Add(new NoteItem(2, "Second Item Second Note", "/images/itemImage2.jpg"));
-
-            Notes.Add(new Note(2, "Second Note", "Second Description", "/images/image2.jpg", "recipe", "www.domain.com", noteItems));
+            Notes.Add(new Note(1, "First Note", "First Description", "/images/noteImage1.jpg", "recipe", "http://www.domain.com", noteItems));
 
             noteItems = new List<NoteItem>();
-            noteItems.Add(new NoteItem(1, "First Item Third Note", "/images/itemImage1.jpg"));
-            noteItems.Add(new NoteItem(2, "Second Item Third Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(4, "First Item Second Note", "/images/itemImage1.jpg"));
+            noteItems.Add(new NoteItem(5, "Second Item Second Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(6, "Third Item Second Note", "/images/itemImage3.jpg"));
 
-            Notes.Add(new Note(3, "Third Note", "Third Description", "/images/image3.jpg", "recipe", "www.domain.com", noteItems));
+            Notes.Add(new Note(2, "Second Note", "Second Description", "/images/noteImage2.jpg", "recipe", "", noteItems));
+
+            noteItems = new List<NoteItem>();
+            noteItems.Add(new NoteItem(7, "First Item Third Note", "/images/itemImage1.jpg"));
+            noteItems.Add(new NoteItem(8, "Second Item Third Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(9, "Third Item Third Note", "/images/itemImage3.jpg"));
+
+            Notes.Add(new Note(3, "Third Note", "Third Description", "/images/noteImage3.jpg", "recipe", "www.domain.com", noteItems));
         }
 
         public void OnGet()

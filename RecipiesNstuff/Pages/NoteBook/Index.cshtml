@@ -1,4 +1,7 @@
 ﻿@page
+
+@using RecipiesNstuff.Domain.Extentions;
+
 @model RecipiesNstuff.Pages.Notebook.IndexModel
 @{
 }
@@ -30,13 +33,19 @@
 
     @foreach(var n in Model.Notes) {
 
+        var url = n.Url.CreateUrl();
+        
         <div class="card">
           @*<img class="card-img-top" src="..." alt="Card image cap">*@
           <div class="card-body">
             <h5 class="card-title">@n.Title</h5>
             <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
             <p class="card-text">@n.Description</p>
-            <a href="#" class="card-link">External link</a>
+            @if (!string.IsNullOrEmpty(url))
+            {
+              <a href='@url' class='card-link'>External link</a>
+            } else
+            { <p>No Link</p> }
             <a href="#" class="card-link">Show items</a>
           </div>
         </div>
