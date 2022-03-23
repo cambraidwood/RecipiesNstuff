@@ -35,43 +35,52 @@
 
         var url = n.Url.CreateUrl();
         
-          <div class="card" style="width: 18rem;">
-              @if (!string.IsNullOrEmpty(n.Image)) {
-                <img class="card-img-top" src="@n.Image" alt="Card image cap">
-              }
-              <div class="card-body">
-                  <h5 class="card-title">@n.Title</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
-                  <p class="card-text">@n.Description</p>
-                  @if (!string.IsNullOrEmpty(url))
-                  {
-                    <a href='@url' class='card-link'>External link</a>
-                  } else
-                  { <p>No Link</p> }
-                    @if(n.NoteItems.Any())
-                    {
-                        <div class="accordion" id="accordionExample@(n.Id)">
-                          <div class="accordion-item">
-                              <h2 class="accordion-header" id="headingOne">
-                                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(n.Id)" aria-expanded="true" aria-controls="collapseOne">
-                                      Note items ...
-                                  </button>
-                              </h2>
-                              <div id="collapseOne@(n.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample@(n.Id)">
-                                  <div class="accordion-body">
-                                      <ul>
-                                          @foreach(var i in n.NoteItems)
-                                            {
-                                                 <li>@(i.Text)</li>   
-                                            }
-                                      </ul>
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+
+                <div class="card">
+                  @if (!string.IsNullOrEmpty(n.Image)) {
+                    <img class="card-img-top" src="@n.Image" alt="Card image cap">
+                  }
+                  <div class="card-body">
+                      <h5 class="card-title">@n.Title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
+                      <p class="card-text">@n.Description</p>
+                      @if (!string.IsNullOrEmpty(url))
+                      {
+                        <a href='@url' class='card-link'>External link</a>
+                      } else
+                      { <p>No Link</p> }
+                        @if(n.NoteItems.Any())
+                        {
+                            <div class="accordion" id="accordionExample@(n.Id)">
+                              <div class="accordion-item">
+                                  <h2 class="accordion-header" id="headingOne">
+                                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(n.Id)" aria-expanded="true" aria-controls="collapseOne">
+                                          Note items ...
+                                      </button>
+                                  </h2>
+                                  <div id="collapseOne@(n.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample@(n.Id)">
+                                      <div class="accordion-body">
+                                          <ul>
+                                              @foreach(var i in n.NoteItems)
+                                                {
+                                                     <li>@(i.Text)</li>   
+                                                }
+                                          </ul>
+                                      </div>
                                   </div>
                               </div>
-                          </div>
-                        </div>   
-                    }
-              </div>
+                            </div>   
+                        }
+                  </div>
+                </div>
+
+            </div>
           </div>
+        </div>
+
         <br />
     }
 
