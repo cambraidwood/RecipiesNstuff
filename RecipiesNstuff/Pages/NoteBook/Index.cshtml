@@ -49,7 +49,7 @@
                       <p class="card-text">@n.Description</p>
                       @if (!string.IsNullOrEmpty(url))
                       {
-                        <a href='@url' class='card-link'>External link</a>
+                        <p><a href='@url' class='card-link'>External link</a></p>
                       } else
                       { <p>No Link</p> }
                         @if(n.NoteItems.Any())
