@@ -68,14 +68,18 @@
                                               @foreach(var i in n.NoteItems)
                                               {
                                                 <div class="row">
-                                                    <div class="col-6">
-                                                        @if (!string.IsNullOrEmpty(n.Image)) {
+                                                    @if (!string.IsNullOrEmpty(n.Image)) {
+                                                        <div class="col-6">
                                                             <img class="card-img-top" src="@i.Image" alt="Card image cap" />
-                                                        }
-                                                    </div>
-                                                    <div class="col-6">
-                                                        @(i.Text)
-                                                    </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            @(i.Text)
+                                                        </div>
+                                                    } else {
+                                                        <div class="col-12">
+                                                            @(i.Text)
+                                                        </div>
+                                                    }                                                    
                                                 </div>
                                               }
                                             </div>
