@@ -63,12 +63,23 @@
                                   </h2>
                                   <div id="collapseOne@(n.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample@(n.Id)">
                                       <div class="accordion-body">
-                                          <ul>
+                                          
+                                          <div class="container">
                                               @foreach(var i in n.NoteItems)
-                                                {
-                                                     <li>@(i.Text)</li>   
-                                                }
-                                          </ul>
+                                              {
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        @if (!string.IsNullOrEmpty(n.Image)) {
+                                                            <img class="card-img-top" src="@i.Image" alt="Card image cap" />
+                                                        }
+                                                    </div>
+                                                    <div class="col-6">
+                                                        @(i.Text)
+                                                    </div>
+                                                </div>
+                                              }
+                                            </div>
+                                          
                                       </div>
                                   </div>
                               </div>
