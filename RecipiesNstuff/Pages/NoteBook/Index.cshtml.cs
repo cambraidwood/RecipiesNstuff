@@ -27,14 +27,14 @@ namespace RecipiesNstuff.Pages.Notebook
 
             noteItems = new List<NoteItem>();
             noteItems.Add(new NoteItem(4, "First Item Second Note", "/images/itemImage1.jpg"));
-            noteItems.Add(new NoteItem(5, "Second Item Second Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(5, "Second Item Second Note", ""));
             noteItems.Add(new NoteItem(6, "Third Item Second Note", "/images/itemImage3.jpg"));
 
             Notes.Add(new Note(2, "Second Note", "Second Description", "/images/noteImage2.jpg", "recipe", "", noteItems));
 
             noteItems = new List<NoteItem>();
             noteItems.Add(new NoteItem(7, "First Item Third Note", "/images/itemImage1.jpg"));
-            noteItems.Add(new NoteItem(8, "Second Item Third Note", "/images/itemImage2.jpg"));
+            noteItems.Add(new NoteItem(8, "", "/images/itemImage2.jpg"));
             noteItems.Add(new NoteItem(9, "Third Item Third Note", "/images/itemImage3.jpg"));
 
             Notes.Add(new Note(3, "Third Note", "Third Description", "/images/noteImage3.jpg", "recipe", "www.domain.com", noteItems));
@@ -83,6 +83,11 @@ namespace RecipiesNstuff.Pages.Notebook
             this.Created = DateTime.Now;
             this.Updated = this.Created;
         }
+
+        public bool IsLastNoteItem(NoteItem ni)
+        {
+            return (ni == this.NoteItems.Last());
+        }
     }
 
     public class NoteItem
@@ -90,6 +95,8 @@ namespace RecipiesNstuff.Pages.Notebook
         public int Id { get; }
         public string Text { get; }
         public string Image { get; }
+
+        public bool IsLastItem { get; }
 
         public NoteItem()
         {
@@ -100,6 +107,7 @@ namespace RecipiesNstuff.Pages.Notebook
             this.Id= Id;
             this.Text = Text;
             this.Image= Image;
+            this.IsLastItem = false;
         }
     }
 }

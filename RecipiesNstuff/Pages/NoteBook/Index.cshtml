@@ -7,99 +7,111 @@
 }
 
 <div class="card">
-  <div class="card-header">
-    Notebook
-  </div>
-  <div class="card-body">
+    <div class="card-header">
+        Notebook
+    </div>
+    <div class="card-body">
 
-    <form asp-page-handler="search" method="post">
-      
-        <div class="container">
-          <div class="row">
-            <div class="col-10">
-              <div class="form-group">
-                <input type="text" class="form-control" name="searchText" placeholder="Search">
-              </div>
-            </div>
-            <div class="col-2">
-              <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-           </div>
-        </div>
-      
-        <br />
+        <form asp-page-handler="search" method="post">
 
-    </form>
-
-    @foreach(var n in Model.Notes) {
-
-        var url = n.Url.CreateUrl();
-        
-        <div class="container">
-          <div class="row">
-            <div class="col-6">
-
-                <div class="card">
-                  @if (!string.IsNullOrEmpty(n.Image)) {
-                    <img class="card-img-top" src="@n.Image" alt="Card image cap">
-                  }
-                  <div class="card-body">
-                      <h5 class="card-title">@n.Title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
-                      <p class="card-text">@n.Description</p>
-                      @if (!string.IsNullOrEmpty(url))
-                      {
-                        <p><a href='@url' class='card-link'>External link</a></p>
-                      } else
-                      { <p>No Link</p> }
-                        @if(n.NoteItems.Any())
-                        {
-                            <div class="accordion" id="accordionExample@(n.Id)">
-                              <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingOne">
-                                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(n.Id)" aria-expanded="true" aria-controls="collapseOne">
-                                          Note items ...
-                                      </button>
-                                  </h2>
-                                  <div id="collapseOne@(n.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample@(n.Id)">
-                                      <div class="accordion-body">
-                                          
-                                          <div class="container">
-                                              @foreach(var i in n.NoteItems)
-                                              {
-                                                <div class="row">
-                                                    @if (!string.IsNullOrEmpty(n.Image)) {
-                                                        <div class="col-6">
-                                                            <img class="card-img-top" src="@i.Image" alt="Card image cap" />
-                                                        </div>
-                                                        <div class="col-6">
-                                                            @(i.Text)
-                                                        </div>
-                                                    } else {
-                                                        <div class="col-12">
-                                                            @(i.Text)
-                                                        </div>
-                                                    }                                                    
-                                                </div>
-                                              }
-                                            </div>
-                                          
-                                      </div>
-                                  </div>
-                              </div>
-                            </div>   
-                        }
-                  </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-10">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="searchText" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
                 </div>
-
             </div>
-          </div>
-        </div>
 
-        <br />
-    }
+            <br />
 
-    <button type="button" class="btn btn-primary">Add new note</button>
+        </form>
 
-  </div>
+        @foreach (var n in Model.Notes)
+        {
+
+            var url = n.Url.CreateUrl();
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="card">
+                            @if (!string.IsNullOrEmpty(n.Image))
+                            {
+                                <img class="card-img-top" src="@n.Image" alt="Card image cap">
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@n.Title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">@n.Tags</h6>
+                                <p class="card-text">@n.Description</p>
+                                @if (!string.IsNullOrEmpty(url))
+                                {
+                                    <p><a href='@url' class='card-link'>External link</a></p>
+                                }
+                                else
+                                {
+                                    <p>No Link</p>
+                                }
+                                @if (n.NoteItems.Any())
+                                {
+                                    <div class="accordion" id="accordionExample@(n.Id)">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingOne">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne@(n.Id)" aria-expanded="true" aria-controls="collapseOne">
+                                                    Note items ...
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne@(n.Id)" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample@(n.Id)">
+                                                <div class="accordion-body">
+
+                                                    <div class="container">
+                                                        @foreach (var i in n.NoteItems)
+                                                        {
+                                                            <div class="row">
+                                                                @if (!string.IsNullOrEmpty(i.Image))
+                                                                {
+                                                                    <div class="col-6">
+                                                                        <img class="card-img-top" src="@i.Image" alt="Card image cap" />
+                                                                    </div>
+                                                                    <div class="col-6">
+                                                                        @(i.Text)
+                                                                    </div>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="col-12">
+                                                                        @(i.Text)
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                            @if(!n.IsLastNoteItem(i))
+                                                            {
+                                                                <br />
+                                                            }
+                                                        }
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <br />
+        }
+
+        <button type="button" class="btn btn-primary">Add new note</button>
+
+    </div>
 </div>
