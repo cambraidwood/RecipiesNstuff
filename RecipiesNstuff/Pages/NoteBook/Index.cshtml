@@ -111,6 +111,15 @@
             <br />
         }
 
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+                @for(int i=1;i<=(Model.TotalNotes / Model.PerPage) + (Model.TotalNotes % Model.PerPage == 0 ? 0 : 1); i++)
+                {
+                    <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                }
+          </ul>
+        </nav>
+
         <p>@(Model.TotalNotes) notes<p>
 
         <button type="button" class="btn btn-primary">Add new note</button>
