@@ -2,7 +2,7 @@
 
 @using RecipiesNstuff.Domain.Extentions;
 
-@model RecipiesNstuff.Pages.Notebook.IndexModel
+@model RecipiesNstuff.Pages.NoteBook.IndexModel
 @{
 }
 
@@ -31,33 +31,41 @@
 
         </form>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination">
-                            @for(int i=1;i<=(Model.TotalNotes / Model.PerPage) + (Model.TotalNotes % Model.PerPage == 0 ? 0 : 1); i++)
-                            {
-                                <li class="page-item"><a class="page-link" href="#">@i</a></li>
-                            }
-                      </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <p>@(Model.TotalNotes) notes<p>
-                </div>
-            </div>
-        </div>
+        <form asp-page-handler="pagination" method="post">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <button type="button" class="btn btn-primary">Add new note</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                                @for(int i=1;i<=(Model.TotalNotes / Model.PerPage) + (Model.TotalNotes % Model.PerPage == 0 ? 0 : 1); i++)
+                                {
+                                    <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                                }
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p>@(Model.TotalNotes) notes<p>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </form>
+
+        <form asp-page-handler="addNewNote" method="post">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Add new note</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
 
         <div class="container"><br /></div>
 
@@ -141,33 +149,41 @@
             <br />
         }
 
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination">
-                            @for(int i=1;i<=(Model.TotalNotes / Model.PerPage) + (Model.TotalNotes % Model.PerPage == 0 ? 0 : 1); i++)
-                            {
-                                <li class="page-item"><a class="page-link" href="#">@i</a></li>
-                            }
-                      </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <p>@(Model.TotalNotes) notes<p>
-                </div>
-            </div>
-        </div>
+        <form asp-page-handler="pagination" method="post">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <button type="button" class="btn btn-primary">Add new note</button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                                @for(int i=1;i<=(Model.TotalNotes / Model.PerPage) + (Model.TotalNotes % Model.PerPage == 0 ? 0 : 1); i++)
+                                {
+                                    <li class="page-item"><a class="page-link" href="#">@i</a></li>
+                                }
+                          </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <p>@(Model.TotalNotes) notes<p>
+                    </div>
                 </div>
             </div>
-        </div>
+
+        </form>
+
+        <form asp-page-handler="addNewNote" method="post">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Add new note</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
 
     </div>
 </div>

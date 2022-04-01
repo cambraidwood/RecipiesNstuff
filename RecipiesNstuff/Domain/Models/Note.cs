@@ -3,23 +3,23 @@
     public class Note
     {
         public int Id { get; }
-        public string Title { get; }
-        public string Description { get; }
-        public string Image { get; }
-        public string Tags { get; }
-        public string Url { get; }
-        public List<NoteItem> NoteItems { get; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string? Image { get; set; }
+        public string? Tags { get; set; }
+        public string? Url { get; set; }
+        public List<NoteItem>? NoteItems { get; set; }
         public DateTime Created { get; }
         public DateTime Updated { get; }
 
         public Note()
         {
-            this.Title = String.Empty;
-            this.Description = String.Empty;
-            this.Image = String.Empty;
-            this.Tags = String.Empty;
-            this.Url = String.Empty;    
-            NoteItems = new List<NoteItem>();
+            //this.Title = String.Empty;
+            //this.Description = String.Empty;
+            //this.Image = String.Empty;
+            //this.Tags = String.Empty;
+            //this.Url = String.Empty;    
+            //NoteItems = new List<NoteItem>();
         }
 
         public Note(int Id, string Title, string Description, string Image, string Tags, string Url, List<NoteItem> NoteItems) : base()

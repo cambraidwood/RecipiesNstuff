@@ -4,7 +4,7 @@ using RecipiesNstuff.Domain.Extentions;
 using RecipiesNstuff.Domain.Models;
 using RecipiesNstuff.Services;
 
-namespace RecipiesNstuff.Pages.Notebook
+namespace RecipiesNstuff.Pages.NoteBook
 {
     public class IndexModel : PageModel
     {
@@ -30,6 +30,16 @@ namespace RecipiesNstuff.Pages.Notebook
             string x = searchText;
 
             return Page();
+        }
+
+        public IActionResult OnPostPagination()
+        {
+            return Page();
+        }
+
+        public IActionResult OnPostAddNewNote()
+        {
+            return new RedirectToPageResult("AddNote");
         }
 
     }

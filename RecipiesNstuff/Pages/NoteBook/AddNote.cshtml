@@ -1,0 +1,61 @@
+﻿@page "/NoteBook/AddNote"
+@model RecipiesNstuff.Pages.NoteBook.AddNoteModel
+@{
+}
+
+<div class="card">
+    <div class="card-header">
+        Add Note
+    </div>
+    <div class="card-body">
+
+        <form asp-page-handler="addNewNote" method="post">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="Note.Title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="Note.Title" name="Note.Title" placeholder="Title" value="@Model.Note?.Title">             
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="Note.Description" class="form-label">Description</label>
+                        <textarea class="form-control" id="Note.Description" name="Note.Description" placeholder="Description">@Model.Note?.Description</textarea>           
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="Note.Tags" class="form-label">Tags</label>
+                        <textarea class="form-control" id="Note.Tags" name="Note.Tags" placeholder="Tags">@Model.Note?.Tags</textarea>           
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label for="Note.Url" class="form-label">Url</label>
+                        <input type="text" class="form-control" id="Note.Url" name="Note.Url" placeholder="Url" value="@Model.Note?.Url">           
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <br />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary">Add new note</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
