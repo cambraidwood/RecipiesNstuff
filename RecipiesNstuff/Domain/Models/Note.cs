@@ -2,7 +2,7 @@
 {
     public class Note
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? Image { get; set; }
@@ -14,7 +14,7 @@
 
         public Note()
         {
-            this.Id = 1;
+            this.Id = 0;
             this.Title = String.Empty;
             this.Description = String.Empty;
             this.Image = String.Empty;

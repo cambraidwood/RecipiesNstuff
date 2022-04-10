@@ -9,20 +9,24 @@ namespace RecipiesNstuff.Pages.NoteBook
     public class IndexModel : PageModel
     {
 
+        [BindProperty(SupportsGet = true)]
+        public int PageNum { get; set; }
+
         public List<Note> Notes;
         public int TotalNotes = 0;
         public int PerPage = 10;
-        private NoteService noteService;
+        private INoteService _noteService;
 
-        public IndexModel()
+        public IndexModel(INoteService noteService)
         {
-            noteService = new NoteService();
-            TotalNotes = noteService.Notes.Count;   
-            Notes = noteService.PagedNotes(1,this.PerPage);
+            _noteService = noteService;
+            TotalNotes = _noteService.Notes.Count;   
+            Notes = new List<Note>();
         }
 
         public void OnGet()
         {
+            Notes = _noteService.PagedNotes(PageNum, this.PerPage);
         }
 
         public IActionResult OnPostSearch(string searchText)

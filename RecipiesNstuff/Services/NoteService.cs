@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace RecipiesNstuff.Services
 {
-    public class NoteService
+    public class NoteService: INoteService
     {
 
         private List<Note> _notes;
@@ -20,6 +20,36 @@ namespace RecipiesNstuff.Services
             var res = _notes.Skip((page -1) * perPage).Take(perPage).ToList();
 
             return res; 
+        }
+
+        public int AddNote(Note note)
+        {
+            int id = _notes.Count() + 1;
+
+            note.Id = id;
+
+            note.Title += " (" + id.ToString() + ")";
+
+            int imageNumber = this.GenerateRandomNumber(1, 3);
+
+            note.Image = $"/images/noteImage{imageNumber}.jpg";
+
+            List<NoteItem> noteItems = new List<NoteItem>();
+
+            int itemNumber = this.GenerateRandomNumber(1, 10);
+
+            for (int x = 1; x < itemNumber; x++)
+            {
+                int noteItemImageNumber = this.GenerateRandomNumber(1, 3);
+
+                noteItems.Add(new NoteItem(id, $"Note Item {x} for note {id}", $"/images/itemImage{noteItemImageNumber}.jpg"));
+            }
+
+            note.NoteItems = noteItems;
+
+            _notes.Add(note);
+
+            return id;
         }
 
         private void PopulateNotes()
@@ -62,5 +92,6 @@ namespace RecipiesNstuff.Services
             return (result);
         }
 
+        
     }
 }
