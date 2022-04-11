@@ -37,6 +37,6 @@ namespace RecipiesNstuff.Pages.NoteBook
                 _noteService.AddNote(Note);
 
             return new RedirectToPageResult("/Notebook/index", new { PageNum = (_noteService.Notes.Count() / 10) + (_noteService.Notes.Count() % 10 == 0 ? 0 : 1) });
-        }
+        } 
     }
 }
