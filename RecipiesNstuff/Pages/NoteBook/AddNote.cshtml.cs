@@ -30,6 +30,22 @@ namespace RecipiesNstuff.Pages.NoteBook
             return Page();
         }
 
+        public IActionResult OnPostAddNewNoteItem()
+        {
+            if (Note != null)
+            {
+                if (Note.NoteItems == null)
+                {
+                    Note.NoteItems = new List<NoteItem>();
+                }
+
+                NoteItem item = new NoteItem(0, "", "");
+                Note.NoteItems.Add(item);
+            }
+
+            return Page();
+        }
+
         public IActionResult OnPostAddNewNote()
         {
 

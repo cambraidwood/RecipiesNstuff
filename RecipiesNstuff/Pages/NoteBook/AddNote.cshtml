@@ -1,43 +1,99 @@
 ﻿@page "/NoteBook/AddNote"
+@using RecipiesNstuff.Domain.Models
 @model RecipiesNstuff.Pages.NoteBook.AddNoteModel
 @{
 }
 
-<div class="card">
-    <div class="card-header">
-        Add Note
-    </div>
-    <div class="card-body">
+<form asp-page-handler="addNewNote" method="post">
 
-        <form asp-page-handler="addNewNote" method="post">
+    <div class="card">
+        <div class="card-header">
+            Add Note
+        </div>
+        <div class="card-body">
 
             <div class="container">
 
                 <div class="row">
                     <div class="col-6">
                         <label for="Note.Title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="Note.Title" name="Note.Title" placeholder="Title" value="@Model.Note?.Title">             
+                        <input type="text" class="form-control" id="Note.Title" name="Note.Title" placeholder="Title" value="@Model.Note?.Title">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-6">
                         <label for="Note.Description" class="form-label">Description</label>
-                        <textarea class="form-control" id="Note.Description" name="Note.Description" placeholder="Description">@Model.Note?.Description</textarea>           
+                        <textarea class="form-control" id="Note.Description" name="Note.Description" placeholder="Description">@Model.Note?.Description</textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-6">
                         <label for="Note.Tags" class="form-label">Tags</label>
-                        <textarea class="form-control" id="Note.Tags" name="Note.Tags" placeholder="Tags">@Model.Note?.Tags</textarea>           
+                        <textarea class="form-control" id="Note.Tags" name="Note.Tags" placeholder="Tags">@Model.Note?.Tags</textarea>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-6">
                         <label for="Note.Url" class="form-label">Url</label>
-                        <input type="text" class="form-control" id="Note.Url" name="Note.Url" placeholder="Url" value="@Model.Note?.Url">           
+                        <input type="text" class="form-control" id="Note.Url" name="Note.Url" placeholder="Url" value="@Model.Note?.Url">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            Note Items
+        </div>
+        <div class="card-body">
+
+            <div class="container">
+
+                @{
+                    int itemIndex = 0;
+
+                    if (Model.Note != null)
+                    {
+                        if (Model.Note?.NoteItems.Count() > 0)
+                        {
+                            foreach (NoteItem item in Model.Note?.NoteItems)
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="Note.NoteItems[@itemIndex].Text" class="form-label">Item @(itemIndex + 1) Text</label>
+                                        <input type="text" class="form-control" id="Note.NoteItems[@itemIndex].Text" name="Note.NoteItems[@itemIndex].Text" placeholder="Item @(itemIndex + 1) text" value="@Model.Note.NoteItems[@itemIndex].Text">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="Note.NoteItems[@itemIndex].Image" class="form-label">Item @(itemIndex + 1) Image</label>
+                                        <input type="text" class="form-control" id="Note.NoteItems[@itemIndex].Image" name="Note.NoteItems[@itemIndex].Image" placeholder="Item @(itemIndex + 1) image" value="@Model.Note.NoteItems[@itemIndex].Image">
+                                    </div>
+                                </div>
+
+                                itemIndex++;
+                            }
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <br />
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+                <div class="row">
+                    <div class="col-6">
+                        <button id="AddItem" asp-page-handler="AddNewNoteItem" type="submit">Add New Item</button>
                     </div>
                 </div>
 
@@ -55,7 +111,8 @@
 
             </div>
 
-        </form>
+        </div>
 
     </div>
-</div>
+
+</form>

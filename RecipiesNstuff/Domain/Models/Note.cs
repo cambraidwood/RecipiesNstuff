@@ -20,7 +20,7 @@
             this.Image = String.Empty;
             this.Tags = String.Empty;
             this.Url = String.Empty;
-            NoteItems = new List<NoteItem>();
+            //this.NoteItems = new List<NoteItem>();
         }
 
         public Note(int Id, string Title, string Description, string Image, string Tags, string Url, List<NoteItem> NoteItems) : base()
