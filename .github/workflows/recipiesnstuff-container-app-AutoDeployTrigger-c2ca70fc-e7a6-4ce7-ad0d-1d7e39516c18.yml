@@ -36,8 +36,8 @@ jobs:
         with:
           push: true
           tags: cbdevcontainerreg.azurecr.io/recipiesnstuff-container-app:${{ github.sha }}
-          file: ./RecipiesNStuff/Dockerfile
-          context: ./RecipiesNStuff/
+          file: RecipiesNStuff/Dockerfile
+          context: RecipiesNStuff/
 
 
   deploy:
