@@ -7,7 +7,7 @@ on:
     branches: 
       [ master ]
     paths:
-    - 'dockerfile/**'
+    - 'recipiesNStuff/**'
     - '.github/workflows/recipiesnstuff-container-app-AutoDeployTrigger-c2ca70fc-e7a6-4ce7-ad0d-1d7e39516c18.yml'
 
   # Allow mannually trigger 
@@ -36,8 +36,8 @@ jobs:
         with:
           push: true
           tags: cbdevcontainerreg.azurecr.io/recipiesnstuff-container-app:${{ github.sha }}
-          file: ./dockerfile/Dockerfile
-          context: ./dockerfile/
+          file: recipiesNStuff/Dockerfile
+          context: recipiesNStuff/
 
 
   deploy:
